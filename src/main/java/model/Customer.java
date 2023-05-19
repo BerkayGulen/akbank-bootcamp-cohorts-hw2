@@ -7,15 +7,15 @@ public class Customer {
     private static final AtomicInteger i = new AtomicInteger(0);
     private final int id;
     // companyId is a foreign key
-    private int companyId;
+    private Company company;
     private String name;
     private String surname;
     private int age;
     private Month monthOfRegister;
 
-    public Customer( String name, String surname, int age, Month monthOfRegister,int companyId) {
+    public Customer( String name, String surname, int age, Month monthOfRegister,Company company) {
         this.id = i.incrementAndGet();
-        this.companyId = companyId;
+        this.company = company;
         this.name = name;
         this.surname = surname;
         this.age = age;
@@ -62,11 +62,20 @@ public class Customer {
         this.monthOfRegister = monthOfRegister;
     }
 
-    public int getCompanyId() {
-        return companyId;
+    public Company getCompany() {
+        return company;
     }
 
-    public void setCompanyId(int companyId) {
-        this.companyId = companyId;
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    @Override
+    public String toString() {
+        return "name: "+name+"\n"+
+                "surname: "+surname+"\n"+
+                "age: "+age+"\n"+
+                "Month of register: "+monthOfRegister+"\n"+
+                "Company name: "+company.getName()+"\n";
     }
 }

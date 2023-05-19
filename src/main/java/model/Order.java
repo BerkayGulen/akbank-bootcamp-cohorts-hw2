@@ -7,14 +7,12 @@ public class Order {
     // This field serves as a db id.
     private final int id;
     /* customerId is a foreign key. I wanted to make my classes as close as possible to the db tables.
-    I did not want to store entity inside entity or list inside my classes.
-    I use foreign keys and another tables for implement my logic
     */
     private int customerId;
     private double price;
     private int amount;
     private String description;
-    private double totalAmount;
+    private double totalPrice;
 
     public Order(int customerId, double price, int amount, String description) {
         this.id = i.incrementAndGet();
@@ -22,7 +20,7 @@ public class Order {
         this.price = price;
         this.amount = amount;
         this.description = description;
-        this.totalAmount = amount * price;
+        this.totalPrice = amount * price;
     }
 
 
@@ -66,11 +64,19 @@ public class Order {
         this.description = description;
     }
 
-    public double getTotalAmount() {
-        return totalAmount;
+    public double getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setTotalAmount(double totalAmount) {
-        this.totalAmount = totalAmount;
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    @Override
+    public String toString() {
+        return "Description: "+description+"\n"+
+                "price: "+price+" TL\n"+
+                "Amount: "+amount+" \n"+
+                "Total Amount: "+ totalPrice +" TL\n";
     }
 }
