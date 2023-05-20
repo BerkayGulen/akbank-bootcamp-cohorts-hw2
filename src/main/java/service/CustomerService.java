@@ -21,7 +21,9 @@ public class CustomerService {
     }
     public void displayCustomersByContainsSpecificLetter(String letter){
 
-        customers.stream().filter(customer -> customer.getName().toLowerCase().contains(letter.toLowerCase())).forEach(System.out::println);
+        customers.stream().filter(customer -> customer.getName().toLowerCase().contains(letter.toLowerCase())
+                || customer.getSurname().toLowerCase().contains(letter.toLowerCase()))
+                .forEach(System.out::println);
     }
 
 
